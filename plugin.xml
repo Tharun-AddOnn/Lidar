@@ -13,4 +13,3 @@
     <source-file src="src/ios/Lidar.m" />
   </platform>
 </plugin>
-</feature>
