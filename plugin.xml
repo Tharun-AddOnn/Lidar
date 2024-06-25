@@ -10,7 +10,7 @@
         <param name="ios-package" value="Lidar" />
       </feature>
     </config-file>
-    <header-file src="src/ios/Lidar.m"/>
+    <header-file src="src/ios/Lidar.h"/>
     <source-file src="src/ios/Lidar.swift" />
 
     <config-file target="*-Info.plist" parent="NSCameraUsageDescription">
