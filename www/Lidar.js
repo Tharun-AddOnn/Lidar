@@ -1,17 +1,19 @@
 var exec = require('cordova/exec');
 
-var Lidar = {
-    isLiDARAvailable: function(successCallback, errorCallback) {
-        cordova.exec(successCallback, errorCallback, "Lidar", "isLiDARAvailable", []);
-    },
+pluginName = 'Lidar';
 
-    startScanning: function(successCallback, errorCallback) {
-        cordova.exec(successCallback, errorCallback, "Lidar", "startScanning", []);
-    },
-
-    stopScanning: function(successCallback, errorCallback) {
-        cordova.exec(successCallback, errorCallback, "Lidar", "stopScanning", []);
-    }
+exports.ErrorCodes = {
+    Unsupported: 1
 };
 
-module.exports = Lidar;
+exports.isLiDARAvailable = function(successCallback, errorCallback) {
+    exec(successCallback, errorCallback, pluginName, "isLiDARAvailable", []);
+};
+
+exports.startScannin = function(successCallback, errorCallback) {
+    exec(successCallback, errorCallback, pluginName, "startScanning", []);
+};
+
+exports.stopScanning = function(successCallback, errorCallback) {
+    exec(successCallback, errorCallback,pluginName, "stopScanning", []);
+};
