@@ -1,4 +1,4 @@
-package com.addonn.Lidar;
+package com.addonn.plugins;
 public class Lidar extends CordovaPlugin {
     private CallbackContext _callbackContext;
      @Override
