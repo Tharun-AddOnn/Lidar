@@ -10,7 +10,7 @@ exports.isLiDARAvailable = function(successCallback, errorCallback) {
     exec(successCallback, errorCallback, pluginName, "isLiDARAvailable", []);
 };
 
-exports.startScannin = function(successCallback, errorCallback) {
+exports.startScanning = function(successCallback, errorCallback) {
     exec(successCallback, errorCallback, pluginName, "startScanning", []);
 };
 
