@@ -38,12 +38,6 @@ class Lidar : CDVPlugin, RoomCaptureViewDelegate, RoomCaptureSessionDelegate,UIV
             aCoder.encode(range, forKey: "range")
         }
 
-    @IBOutlet var exportButton: UIButton? 
-    @IBOutlet var doneButton: UIBarButtonItem?
-    @IBOutlet var cancelButton: UIBarButtonItem?
-    @IBOutlet var activityIndicator: UIActivityIndicatorView?
-
-    private var isScanning: Bool = false
 
     var roomCaptureView: RoomCaptureView?
     var roomCaptureSessionConfig = RoomCaptureSession.Configuration()
@@ -101,41 +95,5 @@ class Lidar : CDVPlugin, RoomCaptureViewDelegate, RoomCaptureSessionDelegate,UIV
     // Delegate method for presenting processed results
     func captureView(didPresent processedResult: CapturedRoom, error: Error?) {
         self.finalResults = processedResult
-    }
-
-    @IBAction func doneScanning(_ sender: UIBarButtonItem) {
-        if isScanning { stopSession() } else { cancelScanning(sender) }
-        self.exportButton?.isEnabled = false
-        self.activityIndicator?.startAnimating()
-    }
-
-    @IBAction func cancelScanning(_ sender: UIBarButtonItem) {
-        navigationController?.dismiss(animated: true)
-    }
-    
-    // Export the USDZ output by specifying the `.parametric` export option.
-    // Alternatively, `.mesh` exports a nonparametric file and `.all`
-    // exports both in a single USDZ.
-    @IBAction func exportResults(_ sender: UIButton) {
-        let destinationFolderURL = FileManager.default.temporaryDirectory.appending(path: "Export")
-        let destinationURL = destinationFolderURL.appending(path: "Room.usdz")
-        let capturedRoomURL = destinationFolderURL.appending(path: "Room.json")
-        do {
-            try FileManager.default.createDirectory(at: destinationFolderURL, withIntermediateDirectories: true)
-            let jsonEncoder = JSONEncoder()
-            let jsonData = try jsonEncoder.encode(finalResults)
-            try jsonData.write(to: capturedRoomURL)
-            try finalResults?.export(to: destinationURL, exportOptions: .parametric)
-            
-            let activityVC = UIActivityViewController(activityItems: [destinationFolderURL], applicationActivities: nil)
-            activityVC.modalPresentationStyle = .popover
-            
-            present(activityVC, animated: true, completion: nil)
-            if let popOver = activityVC.popoverPresentationController {
-                popOver.sourceView = self.exportButton
-            }
-        } catch {
-            print("Error = \(error)")
-        }
     }
 }

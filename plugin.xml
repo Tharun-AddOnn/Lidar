@@ -6,7 +6,7 @@ xmlns:android="http://schemas.android.com/apk/res/android">
         <clobbers target="Lidar" />
     </js-module>
     <platform name="ios">
-        <config-file parent="/*" target="config.xml">
+        <config-file parent="/*" target="config.xml">   
             <feature name="Lidar">
                 <param name="ios-package" value="Lidar" />
             </feature>
