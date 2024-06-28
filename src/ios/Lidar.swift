@@ -5,8 +5,8 @@ import UIKit
 
 @available(iOS 16.0, *)
 @objc(Lidar) 
-class Lidar : CDVPlugin, RoomCaptureViewDelegate, RoomCaptureSessionDelegate,UIViewController {
-    var _callbackId: String?
+class Lidar : CDVPlugin, RoomCaptureViewDelegate, RoomCaptureSessionDelegate{
+    //var _callbackId: String?
     var modelName: String
         var range: Double
     
@@ -52,7 +52,7 @@ class Lidar : CDVPlugin, RoomCaptureViewDelegate, RoomCaptureSessionDelegate,UIV
 
     @objc(startScanning:)
     func startScanning(command: CDVInvokedUrlCommand) {
-        _callbackId = command.callbackId
+       // _callbackId = command.callbackId
         guard let view = self.webView else {
             return
         }
@@ -68,7 +68,7 @@ class Lidar : CDVPlugin, RoomCaptureViewDelegate, RoomCaptureSessionDelegate,UIV
             
             // Return success callback to Cordova
             let pluginResult = CDVPluginResult(status: CDVCommandStatus_OK)
-            //self.commandDelegate.send(pluginResult, callbackId: command.callbackId)
+            self.commandDelegate.send(pluginResult, callbackId: command.callbackId)
         }
     }
 
