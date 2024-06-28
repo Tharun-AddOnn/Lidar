@@ -1,5 +1,5 @@
 {
-  "name": "Lidar",
+  "name": "cordova-plugin-lidar",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -15,8 +15,9 @@
     "lidar:cordova",
     "lidar",
     "plugin",
-    "Lidar"
+    "Lidar",
+    "cordova-plugin-lidar"
   ],
   "author": "Tharun",
-  "license": "ISC"
+  "license": "MIT"
 }
